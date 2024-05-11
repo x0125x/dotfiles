@@ -1,0 +1,108 @@
+/*******************************************************************************
+ * ROFI SQUARED THEME USING THE EVERFOREST PALETTE 
+ * User                 : LR-Tech               
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+configuration {
+  show-icons:    true;
+  icon-theme:    "Adwaita";
+  display-drun:  "apps";
+}
+
+
+* {
+  font:   "JetBrainsMono Nerd Font Medium 11";
+
+  bg    : #1E2326;
+  bg-alt    : #272E33;
+  fg    : #859289;
+  accent : #A7C080;
+  urgent : @E67E80;
+
+  background-color : transparent;
+  text-color       : @fg;
+
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
+}
+
+element-icon, element-text, scrollbar {
+  cursor: pointer;
+}
+
+window {
+  transparency: "real";
+  location : center;
+  width    : 600px;
+  height   : 500px;
+
+  background-color : @bg;
+  border-radius    : 8px;
+}
+
+mainbox {
+  padding : 24px;
+  spacing : 24px;
+}
+
+inputbar {
+  padding          : 8px;
+  spacing          : 4px;
+  children         : [ icon-search, entry ];
+  border           : 0 0 2px 0 solid;
+  border-color     : @accent;
+  border-radius    : 2px;
+  background-color : @bg-alt;
+}
+
+icon-search, entry, element-icon, element-text {
+  vertical-align: 0.5;
+}
+
+entry {
+  placeholder       : "Run > ";
+}
+
+textbox {
+  padding          : 4px 8px;
+  background-color : @bg-alt;
+}
+
+listview {
+  columns       : 1;
+  spacing       : 8px;
+  fixed-height  : false;
+  fixed-columns : true;
+}
+
+element {
+  spacing       : 1em;
+  padding       : 8px;
+  border-radius : 2px;
+}
+
+element normal urgent {
+  text-color: @urgent;
+}
+
+element normal active {
+  text-color: @accent;
+}
+
+element selected {
+  background-color: @accent;
+}
+
+element selected urgent {
+  background-color: @urgent;
+}
+
+element-icon {
+  size: 1.5em;
+}
+
+element-text {
+  text-color: inherit;
+}

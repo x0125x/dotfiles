@@ -1,0 +1,36 @@
+#! /bin/sh
+
+xrandr --output HDMI-0 --primary --mode 5120x1440 --pos 0x1080 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 1600x0
+picom -f --config ~/.config/picom/picom.conf &
+
+if type "xrandr"; then
+    for m  in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        bspc monitor $m -d 1 2 3 4 5
+    done
+else
+    bspc monitor HMDI-0 -d 1 2 3 4 5
+    bspc monitor HDMI-1-1 -d 1 2 3 4 5
+fi
+
+bspc config border_width         2
+bspc config window_gap          20
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
+
+pkill sxhkd
+pkill polybar
+
+sxhkd -c ~/.config/sxhkd/sxhkdrc & 
+nitrogen --restore &
+
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar main &
+  done
+else
+  polybar main &
+fi
+
+
